@@ -37,10 +37,9 @@
 ### Use this tool as a python package
 
 You can use this tool also as a python package
-
-    ```shell
+    
     pip install nvd-search
-    ```
+    
 
 ## Usage
 
