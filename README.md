@@ -38,7 +38,7 @@
 
 You can use this tool also as a python package
 
-    ```
+    ```shell
     pip install nvd-search
     ```
 
