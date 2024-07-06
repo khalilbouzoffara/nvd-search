@@ -39,6 +39,9 @@ class NvdDatabase():
         nvd_db = self.init_database()
         cves_collection = nvd_db['cves']
 
+        # Define apiKey header 
+        headers = { 'apiKey': self.api_key }
+
         # Get the total number of the cves at the times of initializing the tool
         responseT = requests.get(self.nvd_url, headers=headers)
         data = responseT.json()
@@ -51,7 +54,7 @@ class NvdDatabase():
         # Iterate through the API calls to get the cves
         while (self.start_index < total_cves):
 
-            headers = { 'apiKey': self.api_key }
+            
             params = { 'resultsPerPage': self.results_per_page, 'startIndex': self.start_index }
             try:
                 # Make a GET request to the NVD API
