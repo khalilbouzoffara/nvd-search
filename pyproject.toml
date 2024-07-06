@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nvd-search"
-version = "0.1.1"
+version = "0.1.2"
 description = "A CLI Tool made with Python to install the NVD database locally and maintain it using MongoDB."
 authors = ["khalil bouzoffara <khalil.bouzoffara@ensi-uma.tn>"]
 readme = "README.md"
