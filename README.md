@@ -12,7 +12,10 @@
 ## Installation
 
 ### Prerequisites
-
+- Request an NVD API KEY , and then export it :
+```bash
+    export NVD_API_KEY=api_key
+``` 
 - Python 3.10 or higher.
 - Poetry (for package management).
 - MongoDB as database for this tool.

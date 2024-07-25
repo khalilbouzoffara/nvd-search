@@ -3,6 +3,7 @@ from typing_extensions import Annotated
 import typer
 from .db_populate import NvdDatabase
 from . import __app_name__, __version__
+import os
 
 app = typer.Typer()
 
@@ -26,16 +27,22 @@ def main(
 
 
 @app.command()
-def init( 
-    api_key: str = typer.Option(default=..., help="Populate the NVD database using api key")
-):
+def init():
     """
-    Initialize the users database. Please provide the api key with --api-key option.
+    Initialize the users database.
     """
-    NVD = NvdDatabase(api_key)
-    total_cves = NVD.dump_nvd()
-    
-    if total_cves:
-        typer.secho(f"NVD initialized successfully with {total_cves} cves", fg=typer.colors.GREEN)
+    if os.environ.get('NVD_API_KEY'):
+        api_key = os.environ.get('NVD_API_KEY')
+        NVD = NvdDatabase(api_key)
+        total_cves = NVD.dump_nvd()
+        
+        if total_cves:
+            typer.secho(f"NVD initialized successfully with {total_cves} cves", fg=typer.colors.GREEN)
+        else:
+            typer.secho("Error initializing the database", fg=typer.colors.RED)
+   
     else:
-        typer.secho("Error initializing the database", fg=typer.colors.RED)
+        typer.echo("Please export NVD_API_KEY")
+        raise typer.Exit()
+       
+        

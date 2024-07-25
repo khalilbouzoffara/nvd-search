@@ -19,7 +19,7 @@ class NvdDatabase():
         # Create the database 
         return client['nvd']
 
-    def retry_request(self, headers, params=None, time_sleep=3, total=3, status_forcelist=503):
+    def retry_request(self, headers, params=None, time_sleep=2, total=2, status_forcelist=503):
         # Make number of requests required
         for _ in range(total):
             try:
